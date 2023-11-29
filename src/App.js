@@ -4,7 +4,12 @@ import ChampionList from './ChampionList';
 
 class App extends React.Component {
     state = {
-        count: 5
+        count: 5,
+        maxChampions: 0
+    };
+
+    setMaxChampions = (max) => {
+        this.setState({ maxChampions: max });
     };
 
     setChampionCount = (count) => {
@@ -14,8 +19,8 @@ class App extends React.Component {
     render() {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-                <ChampionPicker setCount={this.setChampionCount} />
-                <ChampionList count={this.state.count} />
+                <ChampionPicker setCount={this.setChampionCount} maxChampions={this.state.maxChampions} />
+                <ChampionList count={this.state.count} setMaxChampions={this.setMaxChampions} />
             </div>
         );
     }

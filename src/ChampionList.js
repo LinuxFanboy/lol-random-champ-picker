@@ -78,10 +78,15 @@ class ChampionList extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.fetchChampions();
+    }
+
     fetchChampions = async () => {
         const response = await axios.get('https://ddragon.leagueoflegends.com/cdn/13.23.1/data/en_US/champion.json');
         const champions = Object.values(response.data.data);
         this.setState({ allChampions: champions }, this.pickRandomChampions);
+        this.props.setMaxChampions(champions.length);
     };
 
     pickRandomChampions = () => {
