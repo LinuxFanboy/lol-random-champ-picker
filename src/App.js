@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ChampionPicker from './ChampionPicker';
+import ChampionList from './ChampionList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    state = {
+        count: 5
+    };
+
+    setChampionCount = (count) => {
+        this.setState({ count });
+    };
+
+    render() {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+                <ChampionPicker setCount={this.setChampionCount} />
+                <ChampionList count={this.state.count} />
+            </div>
+        );
+    }
 }
 
 export default App;
